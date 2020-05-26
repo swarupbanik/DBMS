@@ -1,0 +1,8 @@
+CREATE TRIGGER remove_intro_video
+AFTER INSERT ON Topic
+FOR EACH ROW
+BEGIN
+UPDATE Videos
+SET No_of_videos_uploaded = No_of_videos_uploaded - 1  
+WHERE T_id= new.T_id;
+END

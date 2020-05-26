@@ -1,0 +1,9 @@
+CREATE TRIGGER even_semester
+AFTER INSERT ON Student
+FOR EACH ROW
+BEGIN
+IF(new.Semester/2 != 0)
+UPDATE Student
+SET Semester = Semester + 1;  
+WHERE SRN= new.SRN;
+END

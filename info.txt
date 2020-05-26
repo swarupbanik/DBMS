@@ -1,0 +1,75 @@
+Problem Statement:
+Constructing a database for PES’s Impartus website that contains information  like student, professor, department, courses, professor_offer_courses, student_views_videos, admin, topic, videos etc, all having multiple attributes using postgreSQL.
+
+--------------------------------------------------------------------------------------------------
+FUNCTIONAL DEPENDENCIES:
+Department:
+D_id -> {D_id,D_name,Program}(Primary Key)
+D_name ->{D_id,D_name,Program}
+
+Student:
+SRN -> {SRN,Name,Semester,Karma Points,D_id}(Primary Key)
+{SRN,Name} -> {SRN,Name,Semester,Karma Points,D_id}
+
+Courses:
+C_id ->{C_id,C_name,Semester,Course_info,D_id,E_id}(Primary Key)
+C_name -> {C_id,C_name,Semester,Course_info,D_id,E_id}
+
+Professor:
+E_id -> {E_id, Name,Mail id,About,D_id}(Primary Key)
+Mail id -> {E_id,Name,Mail id,About, D_id}
+
+Videos:
+V_id -> {V_id,Duration,Date,Time,Title,E_id}(Primary Key)
+Title -> {V_id,Duration,Date,Time,Title,E_id}
+{V_id,E_id} -> {V_id,Duration,Date,Time,Title,E_id}
+
+Topic:
+T_id -> {T_id,E_id,No.of videos uploaded,No.of followers,Name,C_id}(Primary Key)
+Name -> {T_id,E_id,No.of followers,Name,C_id}
+
+Admin:
+User_id -> {user_id,Password}(Primary Key)
+
+--------------------------------------------------------------------------------------------------
+
+CANDIDATE KEYS:
+Department:
+D_id
+D_name
+
+Student:
+SRN
+
+Courses:
+C_id
+C_name
+Course_info
+
+Professor:
+E_id
+Mail id
+
+Videos:
+V_id
+Title
+
+Topic:
+T_id
+Name
+
+Admin:
+user_id
+
+
+-------------------------------------------------------------------------------------------------
+
+
+
+
+
+
+
+
+
+
